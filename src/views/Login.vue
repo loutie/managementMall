@@ -6,7 +6,7 @@
           </div>
               <el-form :model="loginForm" :rules="rules" ref="loginRef" class="login-form" label-width="0px">
                 <el-form-item  prop="username">
-                  <el-input v-model="loginForm.username"  prefix-icon="iconfont icon-user"></el-input>
+                  <el-input v-model="loginForm.username"  prefix-icon="iconfont icon-user" autofocus='true'></el-input>
                 </el-form-item>
                 <el-form-item  prop="password">
                   <el-input type="password" v-model="loginForm.password" prefix-icon="iconfont icon-3702mima"></el-input>
@@ -25,8 +25,8 @@ export default {
   data () {
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       rules: {
         username: [
@@ -49,12 +49,12 @@ export default {
         console.log(val)
         if (!val) return false
         var res = await this.$Http.post('Login', this.loginForm)
-        // console.log(res.data)
+        // console.log(res.data.data.token)
         if (res.data.meta.status === 400) {
           this.$message.error('账号和密码输入错误，请重新输入！！！')
         } else {
           this.$message.success('登录成功，欢迎进入！！！')
-          window.sessionStorage.setItem('token', res.data.token)
+          window.sessionStorage.setItem('token', res.data.data.token)
           this.$router.push('/home')
         }
       })
