@@ -183,13 +183,14 @@ export default {
       console.log(this.tip)
       if (this.tip !== 'confirm') {
         this.$message.info('已取消删除')
+      } else {
+        this.data = await this.$Http.delete('users/' + id)
+        if (this.data.data.meta.status !== 200) {
+          this.$message.error('删除用户失败!')
+        }
+        this.$message.success('删除用户成功')
+        this.getUserList()
       }
-      this.data = await this.$Http.delete('users/' + id)
-      if (this.data.data.meta.status !== 200) {
-        this.$message.error('删除用户失败!')
-      }
-      this.$message.success('删除用户成功')
-      this.getUserList()
     },
     // 分配角色
     async setRole (val) {

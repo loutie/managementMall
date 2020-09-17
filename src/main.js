@@ -6,6 +6,7 @@ import './plugins/element.js'
 import './utils/axios'
 import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
+import './plugins/zTable.js'
 
 Vue.config.productionTip = false
 

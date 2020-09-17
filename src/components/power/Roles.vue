@@ -96,7 +96,8 @@ export default {
       res: '',
       tip: '',
       val: '',
-      idstr: ''
+      idstr: '',
+      data: ''
     }
   },
   created () {
@@ -142,13 +143,14 @@ export default {
       // console.log(this.tip)
       if (this.tip !== 'confirm') {
         this.$message.info('已取消删除')
+      } else {
+        this.data = await this.$Http.delete('roles/' + id)
+        if (this.data.data.meta.status !== 200) {
+          this.$message.error('删除角色失败!')
+        }
+        this.$message.success('删除角色成功')
+        this.getRightsList()
       }
-      this.data = await this.$Http.delete('roles/' + id)
-      if (this.data.data.meta.status !== 200) {
-        this.$message.error('删除角色失败!')
-      }
-      this.$message.success('删除角色成功')
-      this.getRightsList()
     },
     // 删除角色中权限
     async removeRoleTagById (roles, id) {
@@ -160,18 +162,19 @@ export default {
       console.log(this.tip)
       if (this.tip !== 'confirm') {
         this.$message.info('已取消删除')
+      } else {
+        this.val = await this.$Http.delete(`roles/${roles.id}/rights/${id}`)
+        // if (this.val.data.meta.status !== 200) {
+        //   this.$message.error('删除失败!')
+        // }
+        // this.$message.success('删除成功')
+        // this.getRightsList()
+        roles.children = this.val.data.data
       }
-      this.val = await this.$Http.delete(`roles/${roles.id}/rights/${id}`)
-      // if (this.val.data.meta.status !== 200) {
-      //   this.$message.error('删除失败!')
-      // }
-      // this.$message.success('删除成功')
-      // this.getRightsList()
-      roles.children = this.val.data.data
     },
     async showDialog (roles) {
       this.res = await this.$Http.get('rights/tree')
-      console.log(this.res)
+      // console.log(this.res)
       if (this.res.data.meta.status !== 200) {
         this.$message.error('获取角色列表失败！')
       }
