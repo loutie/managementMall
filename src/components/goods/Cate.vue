@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import AddDialog from './Dialog/AddDialog'
-import EidtDialog from './Dialog/updataDialog'
+import AddDialog from './Cate/AddDialog'
+import EidtDialog from './Cate/updataDialog'
 export default {
   components: {
     AddDialog,

@@ -2,7 +2,7 @@
   <el-container class="home-container">
     <el-header>
       <div>
-        <img src="http://bpic.588ku.com/element_origin_min_pic/17/02/04/1550050248cc95866f6cefa4f92576a3.jpg" alt="">
+        <img src="../assets/img/coderImg.jpg" alt="">
         <span>后台管理系统</span>
       </div>
       <el-button @click="back" type="info">退出</el-button>
