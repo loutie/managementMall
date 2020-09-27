@@ -7,6 +7,9 @@ import './utils/axios'
 import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 import './plugins/zTable.js'
+import './plugins/filter.js'
+import './plugins/quill.js'
+import './plugins/lodash.js'
 
 Vue.config.productionTip = false
 

@@ -11,10 +11,10 @@
     <el-alert title="注意：只允许为第三级分类设置相关参数！" type="warning" show-icon :closable="false"></el-alert>
     <!-- 选择列表 -->
     <el-row class="tbrow">
-      <el-col :span="4">
+      <el-col :span="2">
         <div class="rowcontent">选择商品分类:</div>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="5">
         <!-- 级联 -->
         <el-cascader
         v-model="selectValue"
